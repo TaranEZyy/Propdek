@@ -1,38 +1,310 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f0f5;
+  color: #333;
+}
+
+h1 {
   text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.controls {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 20px;
+}
+
+.controls input,
+.controls button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.controls input {
+  flex: 1;
+  min-width: 250px;
+}
+
+.controls button {
+  background-color: #0077cc;
   color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.controls button:hover {
+  background-color: #005fa3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.controls input:focus,
+.controls button:focus {
+  outline: none;
+  border-color: #005fa3;
+}
+
+
+.list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+
+.list {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.list-title {
+  font-weight: 600;
+  font-size: 18px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #333;
+}
+
+.list-header button {
+  background: transparent;
+  border: none;
+  color: red;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.list-header button:hover {
+  color: #d9534f;
+}
+
+
+.task-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.task-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.task-input button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.task-input button:hover {
+  background-color: #218838;
+}
+
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  background: #f9f9f9;
+  padding: 12px 16px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border-left: 5px solid #0077cc;
+  cursor: grab;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.task:hover {
+  background-color: #f0f4f8;
+}
+
+.task.completed {
+  text-decoration: line-through;
+  color: #888;
+  background-color: #e6e6e6;
+}
+
+.task button {
+  background: transparent;
+  border: none;
+  color: red;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.task button:hover {
+  color: #d9534f;
+}
+
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  .list-container {
+    flex-direction: column;
+    gap: 20px;
   }
+
+  .list {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .controls input,
+  .controls button {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list-title {
+    font-size: 16px;
+  }
+
+  .task {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .task-input input {
+    font-size: 14px;
+  }
+
+  .task-input button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  .task.completed {
+    text-decoration: line-through;
+    color: grey;
+  }
+  
+  .task {
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .task button {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .task button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+
+  .task button:nth-child(2) {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .task button:nth-child(2):hover {
+    background-color: #388e3c;
+    transform: scale(1.05);
+  }
+  
+
+  .task button:nth-child(3) {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .task button:nth-child(3):hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+  }
+  
+
+  .task.completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+
+  .buttoncss {
+    border: 20px solid black;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-right: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .buttoncss:hover {
+    background-color: #dcdcdc;
+  }
+  
+  
+  
 }
